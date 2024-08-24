@@ -15,7 +15,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.prod
-    image: sonam889/simple_blog_api
+    image: deepika7785/simple_blog_api
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
