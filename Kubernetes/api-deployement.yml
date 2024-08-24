@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: simple-blog-api
-          image: sonam889/simple_blog_api
+          image: deepika7785/simple_blog_api
           ports:
             - containerPort: 3000
           env: 
