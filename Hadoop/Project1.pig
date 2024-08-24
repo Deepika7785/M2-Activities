@@ -1,7 +1,7 @@
 -- Load data from HDFS
-inputDialogues4 = LOAD 'hdfs:///user/sonam/inputs/episodeIV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, line:chararray);
-inputDialogues5 = LOAD 'hdfs:///user/sonam/inputs/episodeV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, line:chararray);
-inputDialogues6 = LOAD 'hdfs:///user/sonam/inputs/episodeVI_dialogues.txt' USING PigStorage('\t') AS (name:chararray, line:chararray);
+inputDialogues4 = LOAD 'hdfs:///user/deepika/inputs/episodeIV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, line:chararray);
+inputDialogues5 = LOAD 'hdfs:///user/deepika/inputs/episodeV_dialogues.txt' USING PigStorage('\t') AS (name:chararray, line:chararray);
+inputDialogues6 = LOAD 'hdfs:///user/deepika/inputs/episodeVI_dialogues.txt' USING PigStorage('\t') AS (name:chararray, line:chararray);
 
 -- Filter out the first 2 lines from each file
 ranked4 = RANK inputDialogues4;
@@ -22,7 +22,7 @@ names = FOREACH groupByName GENERATE $0 as name, COUNT($1) as no_of_lines;
 namesOrdered = ORDER names BY no_of_lines DESC;
 
 -- Remove the outputs folder
-rmf hdfs:///user/sonam/outputs;
+rmf hdfs:///user/deepika/outputs;
 
 -- Store result in HDFS
-STORE namesOrdered INTO 'hdfs:///user/sonam/outputs' USING PigStorage('\t');
+STORE namesOrdered INTO 'hdfs:///user/deepika/outputs' USING PigStorage('\t');
